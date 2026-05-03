@@ -8,10 +8,20 @@ public class Main {
         System.out.flush();        
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        CheckList cl = new CheckList();
+        cl.addQuestions();
+        cl.answerQuestions();
+        
         BatteryManager bm = new BatteryManager();
         bm.addBattery();
         bm.printBatteries();
-        Battery bestBattery = bm.getBestBattery();
+        // Battery bestBattery = bm.findBestBattery();
+        bm.findBestBattery();
+
+        
+        while (!cl.isAllTrue()) {
+            cl.answerQuestions();
+        }
    }
 }
