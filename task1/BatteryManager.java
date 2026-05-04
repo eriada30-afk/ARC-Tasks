@@ -8,9 +8,18 @@ public class BatteryManager {
     private Battery bestBattery;
 
     public void addBattery() {
-        System.out.print("How many battaries do you have?: ");
-        int batteryNum = InputScanner.scanner.nextInt();
-        InputScanner.scanner.nextLine();
+        int batteryNum = 0;
+        while (batteryNum < 1) {
+            System.out.println("\nThe number of batteries must be minimum 1. ");
+            System.out.print("How many battaries do you have?: ");
+            if (InputScanner.scanner.hasNextInt()) {
+                batteryNum = InputScanner.scanner.nextInt();
+                InputScanner.scanner.nextLine();
+            } else {
+                System.out.println("Please enter a valid number.");
+                InputScanner.scanner.nextLine();
+            }
+        }
         System.out.println("Now enter every battery's status and voltage.");
         for(int i = 1 ; i <= batteryNum ; i++){
             System.out.println("\nEnter the details for battery number " + i);

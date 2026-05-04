@@ -6,9 +6,18 @@ public class CheckList {
     private ArrayList<CheckListItem> checkList = new ArrayList<>();
 
     public void addQuestions() {
-        System.out.print("How many questions do you have? ");
-        int questionNum = InputScanner.scanner.nextInt();
-        InputScanner.scanner.nextLine();
+        int questionNum = 0;
+        while (questionNum < 3) {
+            System.out.println("\nThe number of questions must be minimum 3. ");
+            System.out.print("How many questions do you have? ");
+            if (InputScanner.scanner.hasNextInt()) {
+                questionNum = InputScanner.scanner.nextInt();
+                InputScanner.scanner.nextLine();
+            } else {
+                System.out.println("\nPlease enter a valid number.");
+                InputScanner.scanner.nextLine();
+            }
+        }
         for(int i = 0 ; i < questionNum ; i++){
             System.out.print("Enter a question(" + (i+1) + "/" + questionNum + "): ");
             String question = InputScanner.scanner.nextLine();
