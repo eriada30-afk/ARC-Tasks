@@ -71,7 +71,7 @@ public class BatteryManager {
             }
         }
         Battery bestBattery = batteryList.get(maxIndex);
-        System.out.println("\nBest Battery(" + maxIndex + "): " + bestBattery.toString());
+        System.out.println("\nBest Battery(" + (maxIndex + 1) + "): " + bestBattery.toString());
         this.bestBattery = bestBattery;
         // return bestBattery;
     }
