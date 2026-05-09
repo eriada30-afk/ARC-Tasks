@@ -10,18 +10,19 @@ public class Main {
 
     public static void main(String[] args) {
         CheckList cl = new CheckList();
-        cl.addQuestions();
+        BatteryManager bm = new BatteryManager();
+
+        cl.nextAction();
         cl.answerQuestions();
         
-        BatteryManager bm = new BatteryManager();
         bm.addBattery();
         bm.printBatteries();
         // Battery bestBattery = bm.findBestBattery();
         bm.findBestBattery();
 
-        
         while (!cl.isAllTrue()) {
             cl.answerQuestions();
         }
+        System.out.println("Match Ready!");
    }
 }

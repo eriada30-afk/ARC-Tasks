@@ -9,8 +9,8 @@ public class BatteryManager {
 
     public void addBattery() {
         int batteryNum = 0;
-        while (batteryNum < 1) {
-            System.out.println("\nThe number of batteries must be minimum 1. ");
+        while (batteryNum < 2) {
+            System.out.println("\nThe number of batteries must be minimum 2. ");
             System.out.print("How many battaries do you have?: ");
             if (InputScanner.scanner.hasNextInt()) {
                 batteryNum = InputScanner.scanner.nextInt();
@@ -61,6 +61,7 @@ public class BatteryManager {
         return voltage;
     }
 
+    // 
     public void printBatteries() {
         System.out.println("\nBatteries:");
         for(int i = 0 ; i < batteryList.size() ; i++) {
@@ -68,23 +69,26 @@ public class BatteryManager {
         }
     }
 
+    // Finds the best battery by checking the batteries voltage and picks the one that is closer to 13
+    // if both are equal it checks their status and picks the better one
     public void findBestBattery() {
-        int maxIndex = 0;
+        int bestIndex = 0;
         for (int i = 0 ; i < batteryList.size() ; i++) {
             double voltage = batteryList.get(i).getVoltage();
-            double maxVoltage = batteryList.get(maxIndex).getVoltage();
-            if (voltage > maxVoltage) {
-                maxIndex = i;
-            } else if (voltage == maxVoltage && batteryList.get(i).getStatus().equals("good")) {
-                maxIndex = i;
+            double bestVoltage = batteryList.get(bestIndex).getVoltage();
+            if ((Math.abs(voltage-13)) < (Math.abs(bestVoltage-13))) {
+                bestIndex = i;
+            } else if (voltage == bestVoltage && batteryList.get(i).getStatus().equals("good")) {
+                bestIndex = i;
             }
         }
-        Battery bestBattery = batteryList.get(maxIndex);
-        System.out.println("\nBest Battery(" + (maxIndex + 1) + "): " + bestBattery.toString());
+        Battery bestBattery = batteryList.get(bestIndex);
+        System.out.println("\nBest Battery(" + (bestIndex + 1) + "): " + bestBattery.toString());
         this.bestBattery = bestBattery;
         // return bestBattery;
     }
 
+    // Returns the best battery
     public Battery getBestBattery() {
         return this.bestBattery;
     }
