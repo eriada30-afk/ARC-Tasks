@@ -7,6 +7,7 @@ public class BatteryManager {
     private ArrayList<Battery> batteryList = new ArrayList<>();
     private Battery bestBattery;
 
+    // Ask how many batteries there are and add the batteries to batteryList
     public void addBattery() {
         int batteryNum = 0;
         while (batteryNum < 2) {
@@ -30,6 +31,7 @@ public class BatteryManager {
         }
     }
 
+    // Get status from user
     private String getStatusFromUser() {
         String status = "";
         while(true) {
@@ -45,6 +47,7 @@ public class BatteryManager {
         return status;
     }
 
+    // Get voltage from user
     private double getVoltageFromUser() {
         double voltage = 0;
         while(true) {
@@ -61,7 +64,7 @@ public class BatteryManager {
         return voltage;
     }
 
-    // 
+    // Print all battery status and voltage
     public void printBatteries() {
         System.out.println("\nBatteries:");
         for(int i = 0 ; i < batteryList.size() ; i++) {
@@ -85,7 +88,6 @@ public class BatteryManager {
         Battery bestBattery = batteryList.get(bestIndex);
         System.out.println("\nBest Battery(" + (bestIndex + 1) + "): " + bestBattery.toString());
         this.bestBattery = bestBattery;
-        // return bestBattery;
     }
 
     // Returns the best battery

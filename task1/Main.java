@@ -12,14 +12,16 @@ public class Main {
         CheckList cl = new CheckList();
         BatteryManager bm = new BatteryManager();
 
+        // Get questions from user and add or remove questions from the checlist and answer questions once
         cl.nextAction();
         cl.answerQuestions();
         
+        // Get the batteries from the user and find the best one
         bm.addBattery();
         bm.printBatteries();
-        // Battery bestBattery = bm.findBestBattery();
         bm.findBestBattery();
 
+        // Re-answer until all questions are answered "Yes"
         while (!cl.isAllTrue()) {
             cl.answerQuestions();
         }
